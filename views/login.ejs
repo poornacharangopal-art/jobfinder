@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CareerAI - Login</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc
+                );
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .login-left {
+            width: 50%;
+            padding: 60px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #312e81,
+                    #4f46e5,
+                    #7c3aed
+                );
+        }
+
+        .brand {
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .brand-icon {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 40px;
+            height: 40px;
+
+            margin-right: 8px;
+
+            border-radius: 12px;
+
+            background: rgba(255,255,255,0.2);
+        }
+
+        .brand span:last-child {
+            color: #c4b5fd;
+        }
+
+        .login-content {
+            max-width: 550px;
+        }
+
+        .eyebrow {
+            color: #c7d2fe;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
+        }
+
+        .login-content h1 {
+            color: white;
+
+            font-size: 55px;
+
+            line-height: 1.1;
+
+            margin-bottom: 25px;
+        }
+
+        .login-description {
+            color: #e0e7ff;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+        .login-right {
+            width: 50%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 40px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+
+            padding: 45px;
+
+            background: rgba(255,255,255,0.95);
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(15,23,42,0.12);
+        }
+
+        .login-heading {
+            margin-bottom: 30px;
+        }
+
+        .login-heading h2 {
+            font-size: 32px;
+
+            color: #111827;
+
+            margin-bottom: 8px;
+        }
+
+        .login-heading p {
+            color: #6b7280;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #374151;
+
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        .input-group input:focus {
+            border-color: #6366f1;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(99,102,241,0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .login-footer {
+            margin-top: 25px;
+
+            text-align: center;
+
+            color: #6b7280;
+        }
+
+        .login-footer a {
+            color: #4f46e5;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+        @media(max-width: 800px) {
+
+            .login-container {
+                flex-direction: column;
+            }
+
+            .login-left,
+            .login-right {
+                width: 100%;
+            }
+
+            .login-left {
+                min-height: 400px;
+
+                padding: 35px;
+            }
+
+            .login-content h1 {
+                font-size: 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+
+    <div class="login-left">
+
+
+        <div class="brand">
+
+            <span class="brand-icon">
+                C
+            </span>
+
+            Career<span>AI</span>
+
+        </div>
+
+
+        <div class="login-content">
+
+            <p class="eyebrow">
+                YOUR CAREER. YOUR FUTURE.
+            </p>
+
+            <h1>
+                Build a career
+                you're proud of.
+            </h1>
+
+            <p class="login-description">
+
+                Manage your resume, discover opportunities,
+                and build a stronger professional profile
+                with AI-powered career tools.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="login-right">
+
+
+        <div class="login-card">
+
+
+            <div class="login-heading">
+
+                <h2>
+                    Welcome Back
+                </h2>
+
+                <p>
+                    Login to continue to CareerAI
+                </p>
+
+            </div>
+
+
+
+            <form action="/loginuser"
+                  method="POST">
+
+
+                <div class="input-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="Gmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        name="Password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-btn">
+
+                    Login
+
+                </button>
+
+
+            </form>
+
+
+
+            <div class="login-footer">
+
+                Don't have an account?
+
+                <a href="/signup">
+                    Create Account
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

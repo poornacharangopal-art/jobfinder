@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Rating | CareerAI</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f7fb;
+            color: #111827;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: rgba(255,255,255,0.95);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            margin-right: auto;
+        }
+
+        .logo-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            margin-right: 7px;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(135deg,#4f46e5,#9333ea);
+        }
+
+        .logo span:last-child {
+            color: #6366f1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+        .nav-user {
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            background: linear-gradient(135deg,#6366f1,#8b5cf6);
+        }
+
+
+        /* ================= MAIN CONTAINER ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+
+        /* ================= PAGE TITLE ================= */
+
+        .page-title {
+            margin-bottom: 35px;
+        }
+
+        .page-title h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+
+        /* ================= OVERALL SCORE ================= */
+
+        .overall-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+
+            display: flex;
+            align-items: center;
+            gap: 50px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.06);
+        }
+
+
+        .score-circle {
+
+            width: 190px;
+            height: 190px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            background:
+                conic-gradient(
+                    #6366f1 var(--score),
+                    #e5e7eb var(--score)
+                );
+        }
+
+
+        .score-circle::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 145px;
+            height: 145px;
+
+            background: white;
+
+            border-radius: 50%;
+        }
+
+
+        .score-number {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 45px;
+
+            font-weight: 800;
+
+            color: #111827;
+        }
+
+
+        .score-text {
+            flex: 1;
+        }
+
+
+        .score-text h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .score-text p {
+
+            color: #64748b;
+
+            line-height: 1.7;
+
+            max-width: 700px;
+        }
+
+
+        /* ================= SCORE GRID ================= */
+
+        .score-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .score-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.05);
+        }
+
+
+        .score-card h3 {
+
+            font-size: 16px;
+
+            color: #475569;
+
+            margin-bottom: 15px;
+
+            min-height: 38px;
+        }
+
+
+        .score-value {
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            color: #6366f1;
+        }
+
+
+        /* ================= SECTION ================= */
+
+        .section {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.05);
+        }
+
+
+        .section h2 {
+
+            font-size: 23px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* ================= LIST ================= */
+
+        .list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .list-item {
+
+            padding: 15px 18px;
+
+            border-radius: 10px;
+
+            background: #f8fafc;
+
+            color: #374151;
+
+            line-height: 1.5;
+        }
+
+
+        /* ================= KEYWORDS ================= */
+
+        .keywords {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .keyword {
+
+            padding: 9px 15px;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            border-radius: 20px;
+
+            font-weight: 600;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= RECOMMENDATION ================= */
+
+        .recommendation {
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            background: #eef2ff;
+
+            color: #374151;
+
+            line-height: 1.7;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            padding: 14px 24px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+
+        .primary {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #9333ea
+                );
+        }
+
+
+        .secondary {
+
+            color: #4f46e5;
+
+            background: #eef2ff;
+        }
+
+
+        .button:hover {
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:900px) {
+
+            .score-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .overall-card {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .nav-links {
+
+                display: none;
+            }
+
+            .nav-user {
+
+                margin-left: 10px;
+            }
+
+            .score-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+
+                font-size: 32px;
+            }
+
+            .overall-card {
+
+                padding: 25px;
+            }
+
+            .buttons {
+
+                flex-direction: column;
+            }
+
+            .button {
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- NAVBAR -->
+<!-- ================================================= -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <span class="logo-icon">
+            C
+        </span>
+
+        Career<span>AI</span>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/dashboard">
+            Home
+        </a>
+
+        <a href="/resume-rating">
+            Resume Intelligence
+        </a>
+
+        <a href="/jobs">
+            Job Search
+        </a>
+
+        <a href="/profile">
+            Profile
+        </a>
+
+    </div>
+
+
+    <div class="nav-user">
+
+        <div class="avatar">
+
+            <%= user.Name.charAt(0).toUpperCase() %>
+
+        </div>
+
+        <span>
+
+            <%= user.Name %>
+
+        </span>
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- ================================================= -->
+<!-- MAIN -->
+<!-- ================================================= -->
+
+<div class="container">
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-title">
+
+        <h1>
+            Your Resume Analysis
+        </h1>
+
+        <p>
+            AI-powered insights to help you build a stronger resume.
+        </p>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- OVERALL SCORE -->
+    <!-- ================================================= -->
+
+    <div class="overall-card">
+
+
+        <div
+            class="score-circle"
+            style="--score: <%= analysis.overallScore %>%;">
+
+
+            <div class="score-number">
+
+                <%= analysis.overallScore %>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="score-text">
+
+            <h2>
+                Overall Resume Score
+            </h2>
+
+            <p>
+
+                <%= analysis.summary %>
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- SCORE CARDS -->
+    <!-- ================================================= -->
+
+    <div class="score-grid">
+
+
+        <!-- ATS -->
+
+        <div class="score-card">
+
+            <h3>
+                ATS Compatibility
+            </h3>
+
+            <div class="score-value">
+
+                <%= analysis.atsScore %>%
+
+            </div>
+
+        </div>
+
+
+        <!-- SKILLS -->
+
+        <div class="score-card">
+
+            <h3>
+                Skills
+            </h3>
+
+            <div class="score-value">
+
+                <%= analysis.skillsScore %>%
+
+            </div>
+
+        </div>
+
+
+        <!-- EXPERIENCE -->
+
+        <div class="score-card">
+
+            <h3>
+                Experience
+            </h3>
+
+            <div class="score-value">
+
+                <%= analysis.experienceScore %>%
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECTS -->
+
+        <div class="score-card">
+
+            <h3>
+                Projects
+            </h3>
+
+            <div class="score-value">
+
+                <%= analysis.projectsScore %>%
+
+            </div>
+
+        </div>
+
+
+        <!-- EDUCATION -->
+
+        <div class="score-card">
+
+            <h3>
+                Education
+            </h3>
+
+            <div class="score-value">
+
+                <%= analysis.educationScore %>%
+
+            </div>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <div class="score-card">
+
+            <h3>
+                Professional Summary
+            </h3>
+
+            <div class="score-value">
+
+                <%= analysis.summaryScore %>%
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMATTING -->
+
+        <div class="score-card">
+
+            <h3>
+                Formatting
+            </h3>
+
+            <div class="score-value">
+
+                <%= analysis.formattingScore %>%
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- STRENGTHS -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+        <h2>
+            💪 Strengths
+        </h2>
+
+
+        <div class="list">
+
+
+            <% analysis.strengths.forEach(function(strength){ %>
+
+
+                <div class="list-item">
+
+                    ✓
+                    <%= strength %>
+
+                </div>
+
+
+            <% }) %>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- WEAKNESSES -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+        <h2>
+            ⚠ Areas to Improve
+        </h2>
+
+
+        <div class="list">
+
+
+            <% analysis.weaknesses.forEach(function(weakness){ %>
+
+
+                <div class="list-item">
+
+                    <%= weakness %>
+
+                </div>
+
+
+            <% }) %>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- KEYWORDS -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+        <h2>
+            🔑 Important Keywords
+        </h2>
+
+
+        <div class="keywords">
+
+
+            <% analysis.keywords.forEach(function(keyword){ %>
+
+
+                <span class="keyword">
+
+                    <%= keyword %>
+
+                </span>
+
+
+            <% }) %>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- IMPROVEMENTS -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+        <h2>
+            🚀 Recommended Improvements
+        </h2>
+
+
+        <div class="list">
+
+
+            <% analysis.improvements.forEach(function(improvement){ %>
+
+
+                <div class="list-item">
+
+                    <%= improvement %>
+
+                </div>
+
+
+            <% }) %>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- AI RECOMMENDATION -->
+    <!-- ================================================= -->
+
+    <div class="section">
+
+        <h2>
+            🎯 AI Recommendation
+        </h2>
+
+
+        <div class="recommendation">
+
+            <%= analysis.recommendation %>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+
+            <a
+                href="/resume-modifier"
+                class="button primary"
+            >
+                Modify Resume with AI →
+            </a>
+
+
+            <a
+                href="/resume-rating"
+                class="button secondary"
+            >
+                ← Back to Resume Intelligence
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

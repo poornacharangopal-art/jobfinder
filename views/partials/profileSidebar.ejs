@@ -1,0 +1,248 @@
+<style>
+
+    .sidebar {
+        width: 260px;
+        min-height: calc(100vh - 75px);
+        background: white;
+        border-right: 1px solid #e5e7eb;
+        padding: 25px 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+
+    .sidebar-avatar {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        font-weight: 700;
+        background: linear-gradient(
+            135deg,
+            #4f46e5,
+            #9333ea
+        );
+    }
+
+    .sidebar-title h3 {
+        font-size: 15px;
+    }
+
+    .sidebar-title p {
+        color: #9ca3af;
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 13px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #4b5563;
+        font-weight: 600;
+        transition: 0.2s;
+    }
+
+    .menu-item:hover {
+        background: #eef2ff;
+        color: #4f46e5;
+    }
+
+    .sidebar-bottom {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .mini-user {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 18px;
+    }
+
+    .mini-avatar {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        background: #6366f1;
+    }
+
+    .mini-user strong {
+        display: block;
+        font-size: 13px;
+    }
+
+    .mini-user small {
+        display: block;
+        max-width: 145px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #9ca3af;
+        font-size: 11px;
+    }
+
+    .logout {
+        display: block;
+        padding: 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #ef4444;
+        font-weight: 600;
+    }
+
+    .logout:hover {
+        background: #fef2f2;
+    }
+
+    @media(max-width: 800px) {
+
+        .sidebar {
+            width: 75px;
+            padding: 20px 10px;
+        }
+
+        .sidebar-title div:last-child,
+        .sidebar-bottom {
+            display: none;
+        }
+
+        .menu-item {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+
+        <div class="sidebar-avatar">
+
+            <%= user.Name.charAt(0).toUpperCase() %>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+
+                <%= user.Name %>
+
+            </h3>
+
+            <p>
+                Student
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu">
+
+        <a href="/profile"
+           class="menu-item">
+
+            <span>👤</span>
+            Profile
+
+        </a>
+
+
+        <a href="/profile/about"
+           class="menu-item">
+
+            <span>📝</span>
+            About
+
+        </a>
+
+
+        <a href="/resume"
+           class="menu-item">
+
+            <span>📄</span>
+            Resume
+
+        </a>
+
+
+        <a href="/profile/applied-jobs"
+           class="menu-item">
+
+            <span>💼</span>
+            Applied Jobs
+
+        </a>
+
+    </div>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="mini-user">
+
+            <div class="mini-avatar">
+
+                <%= user.Name.charAt(0).toUpperCase() %>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+
+                    <%= user.Name %>
+
+                </strong>
+
+                <small>
+
+                    <%= user.Gmail %>
+
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <a href="/logout"
+           class="logout">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</aside>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CareerAI - Dashboard</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #f8fafc;
+
+            color: #111827;
+        }
+
+
+        .dashboard {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 50px 25px;
+        }
+
+
+        .hero {
+            min-height: 390px;
+
+            padding: 55px;
+
+            border-radius: 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            position: relative;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #312e81,
+                    #4f46e5,
+                    #7c3aed
+                );
+        }
+
+
+        .hero-content {
+            max-width: 650px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .hero-small {
+            color: #c7d2fe;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+
+        .hero h1 {
+            font-size: 54px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .changing-text {
+            font-size: 19px;
+
+            line-height: 1.6;
+
+            color: #e0e7ff;
+
+            min-height: 32px;
+
+            transition: opacity 0.3s;
+        }
+
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+
+        .primary-btn,
+        .secondary-btn {
+            display: inline-block;
+
+            padding: 13px 22px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+
+        .primary-btn {
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+        }
+
+
+        .hero .primary-btn {
+            background: white;
+
+            color: #4f46e5;
+        }
+
+
+        .secondary-btn {
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.3);
+        }
+
+
+        .hero-decoration {
+            position: absolute;
+
+            right: 8%;
+
+            width: 300px;
+
+            height: 300px;
+        }
+
+
+        .floating-card {
+            position: absolute;
+
+            padding: 22px 30px;
+
+            background:
+                rgba(255,255,255,0.13);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.2);
+
+            backdrop-filter: blur(10px);
+
+            border-radius: 18px;
+
+            font-weight: 700;
+        }
+
+
+        .card-one {
+            top: 20px;
+            right: 30px;
+        }
+
+
+        .card-two {
+            top: 120px;
+            right: 130px;
+        }
+
+
+        .card-three {
+            bottom: 20px;
+            right: 20px;
+        }
+
+
+        .tools-section,
+        .quick-section {
+            margin-top: 60px;
+        }
+
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+
+        .section-heading p {
+            color: #6366f1;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .section-heading h2 {
+            font-size: 30px;
+        }
+
+
+        .tools-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .tool-card {
+            padding: 30px;
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 20px;
+
+            transition: 0.25s;
+        }
+
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(15,23,42,0.08);
+        }
+
+
+        .tool-icon {
+            width: 55px;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #eef2ff;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .tool-card h3 {
+            font-size: 20px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .tool-card p {
+            color: #6b7280;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        .tool-link {
+            text-decoration: none;
+
+            color: #4f46e5;
+
+            font-weight: 700;
+        }
+
+
+        .quick-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .quick-card {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding: 22px;
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 17px;
+
+            text-decoration: none;
+
+            color: #111827;
+        }
+
+
+        .quick-card > span {
+            font-size: 28px;
+        }
+
+
+        .quick-card h3 {
+            font-size: 16px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .quick-card p {
+            color: #6b7280;
+
+            font-size: 14px;
+        }
+
+
+        @media(max-width: 900px) {
+
+            .hero-decoration {
+                display: none;
+            }
+
+            .tools-grid,
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 35px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <%- include("partials/navbar") %>
+
+
+    <main class="dashboard">
+
+
+        <section class="hero">
+
+
+            <div class="hero-content">
+
+
+                <p class="hero-small">
+                    YOUR CAREER DASHBOARD
+                </p>
+
+
+                <h1>
+                    Hello,
+                    <%= user.Name %>
+                    👋
+                </h1>
+
+
+                <p id="changingText"
+                   class="changing-text">
+
+                    Upload your resume and get it
+                    reviewed by AI.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+
+                    <a href="/resume"
+                       class="primary-btn">
+
+                        Upload Resume
+
+                    </a>
+
+
+                    <a href="/jobs"
+                       class="secondary-btn">
+
+                        Find Jobs
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="hero-decoration">
+
+                <div class="floating-card card-one">
+                    AI
+                </div>
+
+                <div class="floating-card card-two">
+                    Resume
+                </div>
+
+                <div class="floating-card card-three">
+                    Career
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <section class="tools-section">
+
+
+            <div class="section-heading">
+
+                <p>
+                    POWERFUL TOOLS
+                </p>
+
+                <h2>
+                    Improve Your Career
+                </h2>
+
+            </div>
+
+
+
+            <div class="tools-grid">
+
+
+                <div class="tool-card">
+
+                    <div class="tool-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        AI Resume Review
+                    </h3>
+
+                    <p>
+
+                        Get an AI-powered analysis of your
+                        resume including ATS score, strengths,
+                        weaknesses and improvement suggestions.
+
+                    </p>
+
+                    <a href="/resumerating"
+                       class="tool-link">
+
+                        Analyze Resume →
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="tool-card">
+
+                    <div class="tool-icon">
+                        ✨
+                    </div>
+
+                    <h3>
+                        AI Resume Modifier
+                    </h3>
+
+                    <p>
+
+                        Improve your resume using AI while
+                        keeping your real skills, experience
+                        and achievements intact.
+
+                    </p>
+
+                    <a href="/resumemodifier"
+                       class="tool-link">
+
+                        Improve Resume →
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="tool-card">
+
+                    <div class="tool-icon">
+                        💼
+                    </div>
+
+                    <h3>
+                        Smart Job Search
+                    </h3>
+
+                    <p>
+
+                        Discover jobs that match your skills,
+                        interests and career profile.
+
+                    </p>
+
+                    <a href="/jobs"
+                       class="tool-link">
+
+                        Find Jobs →
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <section class="quick-section">
+
+
+            <div class="section-heading">
+
+                <p>
+                    QUICK ACTIONS
+                </p>
+
+                <h2>
+                    Continue Your Journey
+                </h2>
+
+            </div>
+
+
+
+            <div class="quick-grid">
+
+
+                <a href="/resume-rating"
+                   class="quick-card">
+
+                    <span>📄</span>
+
+                    <div>
+
+                        <h3>
+                            Resume Intelligence
+                        </h3>
+
+                        <p>
+                            Analyze your resume
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+
+                <a href="/jobs"
+                   class="quick-card">
+
+                    <span>🔎</span>
+
+                    <div>
+
+                        <h3>
+                            Search Jobs
+                        </h3>
+
+                        <p>
+                            Explore opportunities
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+
+                <a href="/profile/about"
+                   class="quick-card">
+
+                    <span>👤</span>
+
+                    <div>
+
+                        <h3>
+                            Complete Profile
+                        </h3>
+
+                        <p>
+                            Add your career information
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script>
+
+        const messages = [
+
+            "Upload your resume and get it reviewed by AI.",
+
+            "Get a new and improved version of your resume.",
+
+            "Discover jobs matching your skills.",
+
+            "Build a stronger career profile with AI."
+
+        ];
+
+
+        let index = 0;
+
+
+        setInterval(function() {
+
+            const text =
+                document.getElementById(
+                    "changingText"
+                );
+
+
+            text.style.opacity = "0";
+
+
+            setTimeout(function() {
+
+                index =
+                    (index + 1)
+                    % messages.length;
+
+
+                text.textContent =
+                    messages[index];
+
+
+                text.style.opacity = "1";
+
+            }, 300);
+
+        }, 3000);
+
+    </script>
+
+
+</body>
+
+</html>

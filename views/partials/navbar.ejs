@@ -1,0 +1,187 @@
+<style>
+
+    .navbar {
+        height: 75px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 0 5%;
+
+        background: rgba(255,255,255,0.95);
+
+        border-bottom: 1px solid #e5e7eb;
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 100;
+    }
+
+
+    .logo {
+        font-size: 23px;
+
+        font-weight: 800;
+
+        margin-right: auto;
+    }
+
+
+    .logo-icon {
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 35px;
+
+        height: 35px;
+
+        margin-right: 7px;
+
+        border-radius: 10px;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #4f46e5,
+                #9333ea
+            );
+    }
+
+
+    .logo span:last-child {
+        color: #6366f1;
+    }
+
+
+    .nav-links {
+        display: flex;
+
+        gap: 30px;
+    }
+
+
+    .nav-links a {
+        color: #4b5563;
+
+        text-decoration: none;
+
+        font-weight: 600;
+
+        transition: 0.2s;
+    }
+
+
+    .nav-links a:hover {
+        color: #4f46e5;
+    }
+
+
+    .nav-user {
+        margin-left: 30px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        font-weight: 600;
+    }
+
+
+    .avatar {
+        width: 38px;
+
+        height: 38px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 50%;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #6366f1,
+                #8b5cf6
+            );
+    }
+
+
+    @media(max-width: 800px) {
+
+        .nav-links {
+            display: none;
+        }
+
+    }
+
+</style>
+
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <span class="logo-icon">
+            C
+        </span>
+
+        Career<span>AI</span>
+
+    </div>
+
+
+
+    <div class="nav-links">
+
+        <a href="/dashboard">
+            Home
+        </a>
+
+        <a href="/resume-rating">
+            Resume Intelligence
+        </a>
+
+        <a href="/jobs">
+            Job Search
+        </a>
+
+        <a href="/profile">
+            Profile
+        </a>
+
+    </div>
+
+
+
+    <div class="nav-user">
+
+        <div class="avatar">
+
+            <%= user.Name.charAt(0).toUpperCase() %>
+
+        </div>
+
+        <span>
+            <%= user.Name %>
+        </span>
+
+    </div>
+
+
+</nav>

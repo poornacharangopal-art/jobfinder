@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Resume Modified</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            min-height: 100vh;
+            background: #f4f7fb;
+        }
+
+
+        .navbar {
+            height: 70px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+        }
+
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+
+        .container {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+
+        .card {
+            width: 550px;
+            background: white;
+            padding: 45px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .success-icon {
+            width: 85px;
+            height: 85px;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            margin: 0 auto 25px;
+        }
+
+
+        h1 {
+            color: #1f2937;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+
+        .message {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+
+        .download-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+
+        .download-button:hover {
+            background: #1d4ed8;
+        }
+
+
+        .back-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #f3f4f6;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+
+        .back-button:hover {
+            background: #e5e7eb;
+        }
+
+
+        .info {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+
+        @media(max-width: 600px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar">
+
+
+        <div class="logo">
+            CareerAI
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="/dashboard">
+                Home
+            </a>
+
+            <a href="/resume-rating">
+                Resume Intelligence
+            </a>
+
+            <a href="/jobs">
+                Job Search
+            </a>
+
+            <a href="/profile">
+                Profile
+            </a>
+
+        </div>
+
+
+        <div class="profile">
+
+            <div class="avatar">
+
+                <%= candidate.Name.charAt(0).toUpperCase() %>
+
+            </div>
+
+
+            <span>
+
+                <%= candidate.Name %>
+
+            </span>
+
+        </div>
+
+
+    </nav>
+
+
+
+    <div class="container">
+
+
+        <div class="card">
+
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h1>
+                Resume Successfully Modified!
+            </h1>
+
+
+            <p class="message">
+
+                Your resume has been professionally improved
+                using AI. The modified version has been
+                generated as a PDF.
+
+            </p>
+
+
+
+            <a
+                href="<%= downloadUrl %>"
+                download
+                class="download-button"
+            >
+                ⬇ Download Modified Resume
+            </a>
+
+
+
+            <a
+                href="/resume-modifier"
+                class="back-button"
+            >
+                Modify Another Resume
+            </a>
+
+
+
+            <div class="info">
+
+                Your resume was improved for grammar,
+                professional wording, structure and
+                ATS friendliness while preserving your
+                original information.
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

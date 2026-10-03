@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Job Search</title>
+
+</head>
+
+<body style="
+    margin:0;
+    font-family:Arial;
+    background:#f5f7fb;
+">
+
+    <%- include("partials/navbar", {user:user}) %>
+
+
+    <div style="
+        max-width:1200px;
+        margin:auto;
+        padding:40px;
+    ">
+
+        <h1>
+            Find Jobs
+        </h1>
+
+        <p>
+            Jobs matched with your skills
+        </p>
+
+
+        <% if (jobs.length === 0) { %>
+
+            <div style="
+                background:white;
+                padding:40px;
+                border-radius:15px;
+            ">
+
+                <h2>
+                    No jobs found
+                </h2>
+
+                <p>
+                    Try adding more skills to your profile.
+                </p>
+
+            </div>
+
+        <% } %>
+
+
+        <div style="
+            display:grid;
+            grid-template-columns:
+            repeat(auto-fit,minmax(300px,1fr));
+            gap:20px;
+        ">
+
+
+            <% jobs.forEach(job => { %>
+
+
+                <div style="
+                    background:white;
+                    padding:25px;
+                    border-radius:15px;
+                    box-shadow:
+                    0 4px 15px
+                    rgba(0,0,0,0.08);
+                ">
+
+
+                    <h2>
+                        <%= job.title %>
+                    </h2>
+
+
+                    <p>
+                        <strong>
+                            Company:
+                        </strong>
+
+                        <%= job.company %>
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Location:
+                        </strong>
+
+                        <%= job.location %>
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Matched skill:
+                        </strong>
+
+                        <%= job.skill %>
+                    </p>
+
+
+                    <div style="
+                        display:flex;
+                        gap:10px;
+                        margin-top:20px;
+                    ">
+
+
+                        <a
+                            href="<%= job.jobUrl %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                padding:10px 15px;
+                                background:#e5e7eb;
+                                text-decoration:none;
+                                color:black;
+                                border-radius:8px;
+                            "
+                        >
+
+                            View Job
+
+                        </a>
+
+
+                        <a
+                            href="<%= job.applyUrl %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                padding:10px 15px;
+                                background:#4f46e5;
+                                color:white;
+                                text-decoration:none;
+                                border-radius:8px;
+                            "
+                        >
+
+                            Apply Now →
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            <% }) %>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            min-height: 100vh;
+        }
+
+        .profile-layout {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .resume-container {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .resume-card {
+            width: 100%;
+            max-width: 750px;
+            background: white;
+            padding: 45px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .resume-card h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 35px;
+            font-size: 16px;
+        }
+
+        .upload-box {
+            border: 2px dashed #bbb;
+            border-radius: 14px;
+            padding: 45px 20px;
+            margin-bottom: 25px;
+            background: #fafafa;
+        }
+
+        .upload-box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .upload-box input {
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .upload-btn {
+            border: none;
+            padding: 14px 30px;
+            border-radius: 9px;
+            background: #222;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .upload-btn:hover {
+            background: #444;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border: 1px solid #b7e4c7;
+            padding: 30px;
+            border-radius: 14px;
+            margin-bottom: 30px;
+        }
+
+        .success-box h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .success-box p {
+            color: #555;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .action-btn {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 9px;
+            background: #222;
+            color: white;
+            font-size: 15px;
+        }
+
+        .action-btn:hover {
+            background: #444;
+        }
+
+        .replace-section {
+            border-top: 1px solid #ddd;
+            padding-top: 30px;
+        }
+
+        .replace-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .replace-section input {
+            margin-bottom: 15px;
+        }
+
+        .replace-btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #eee;
+            font-size: 15px;
+        }
+
+        .replace-btn:hover {
+            background: #ddd;
+        }
+
+        @media (max-width: 768px) {
+
+            .profile-layout {
+                flex-direction: column;
+            }
+
+            .resume-container {
+                padding: 25px;
+            }
+
+            .resume-card {
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <%- include("partials/navbar") %>
+
+    <div class="profile-layout">
+
+        <%- include("partials/profileSidebar") %>
+
+        <div class="resume-container">
+
+            <div class="resume-card">
+
+                <% if (!resume) { %>
+
+                    <h1>Upload Your Resume</h1>
+
+                    <p class="subtitle">
+                        Upload your resume in PDF format to continue.
+                    </p>
+
+                    <form
+                        action="/resumeupload"
+                        method="POST"
+                        enctype="multipart/form-data"
+                    >
+
+                        <div class="upload-box">
+
+                            <h3>Select Your Resume</h3>
+
+                            <p>Only PDF files are accepted.</p>
+
+                            <input
+                                type="file"
+                                name="resume"
+                                accept=".pdf,application/pdf"
+                                required
+                            >
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="upload-btn"
+                        >
+                            Upload Resume
+                        </button>
+
+                    </form>
+
+                <% } else { %>
+
+                    <div class="success-box">
+
+                        <h2>✓ Resume Uploaded Successfully</h2>
+
+                        <p>
+                            Your resume has been uploaded successfully.
+                        </p>
+
+                    </div>
+
+                    <div class="actions">
+
+                        <a
+                            href="/resume-rating"
+                            class="action-btn"
+                        >
+                            Resume Intelligence
+                        </a>
+
+                        <a
+                            href="/resume-modifier"
+                            class="action-btn"
+                        >
+                            Modify Resume with AI
+                        </a>
+
+                    </div>
+
+                    <div class="replace-section">
+
+                        <h3>Replace Your Resume</h3>
+
+                        <form
+                            action="/resumeupload"
+                            method="POST"
+                            enctype="multipart/form-data"
+                        >
+
+                            <input
+                                type="file"
+                                name="resume"
+                                accept=".pdf,application/pdf"
+                                required
+                            >
+
+                            <br><br>
+
+                            <button
+                                type="submit"
+                                class="replace-btn"
+                            >
+                                Replace Resume
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

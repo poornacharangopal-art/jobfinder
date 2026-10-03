@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Update Profile - CareerAI</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #f8fafc;
+        }
+
+
+        .profile-layout {
+            display: flex;
+
+            min-height:
+                calc(100vh - 75px);
+        }
+
+
+        .profile-content {
+            flex: 1;
+
+            padding: 50px;
+
+            max-width: 1000px;
+        }
+
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+
+        .small-title {
+            color: #6366f1;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+
+        .page-header h1 {
+            font-size: 36px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .page-header p {
+            color: #6b7280;
+        }
+
+
+        .form-card {
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 10px 30px
+                rgba(15,23,42,0.04);
+        }
+
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #374151;
+
+            font-weight: 700;
+        }
+
+
+        .form-group input {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+
+        .form-group input:focus {
+            border-color: #6366f1;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(99,102,241,0.1);
+        }
+
+
+        .skill-row {
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .skill-row input {
+            flex: 1;
+        }
+
+
+        .remove-skill {
+            width: 45px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #fee2e2;
+
+            color: #dc2626;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+
+        .add-skill {
+            margin-top: 5px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #4f46e5;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .primary-btn {
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <%- include("partials/navbar") %>
+
+
+    <div class="profile-layout">
+
+
+        <%- include("partials/profileSidebar") %>
+
+
+        <main class="profile-content">
+
+
+            <div class="page-header">
+
+                <p class="small-title">
+                    PROFILE SETTINGS
+                </p>
+
+                <h1>
+                    Update Your Information
+                </h1>
+
+                <p>
+                    Keep your career information updated.
+                </p>
+
+            </div>
+
+
+
+            <div class="form-card">
+
+
+                <form
+                    action="/profile/about/update"
+                    method="POST"
+                >
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Name"
+                            value="<%= user.Name %>"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            College
+                        </label>
+
+                        <input
+                            type="text"
+                            name="College"
+                            value="<%= user.College || '' %>"
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Passout Year
+                        </label>
+
+                        <input
+                            type="number"
+                            name="PassoutYear"
+                            value="<%= user.PassoutYear || '' %>"
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Location"
+                            value="<%= user.Location || '' %>"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Skills
+                        </label>
+
+
+                        <div id="skills-container">
+
+    <% if (user.Skills && user.Skills.length > 0) { %>
+
+        <% user.Skills.forEach(function(skill) { %>
+
+            <div class="skill-row">
+
+                <input
+                    type="text"
+                    name="Skills"
+                    value="<%= skill %>"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="remove-skill"
+                    onclick="removeSkill(this)">
+                    ×
+                </button>
+
+            </div>
+
+        <% }) %>
+
+    <% } else { %>
+
+        <div class="skill-row">
+
+            <input
+                type="text"
+                name="Skills"
+                required
+            >
+
+            <button
+                type="button"
+                class="remove-skill"
+                onclick="removeSkill(this)">
+                ×
+            </button>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+                        <button
+                            type="button"
+                            class="add-skill"
+                            onclick="addSkill()">
+
+                            + Add Skill
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+
+                        Save Changes
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <script>
+
+        function addSkill() {
+
+            const container =
+                document.getElementById(
+                    "skills-container"
+                );
+
+
+            const row =
+                document.createElement("div");
+
+
+            row.className =
+                "skill-row";
+
+
+            row.innerHTML = `
+
+                <input
+                    type="text"
+                    name="Skills"
+                    placeholder="e.g. Node.js"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="remove-skill"
+                    onclick="removeSkill(this)">
+
+                    ×
+
+                </button>
+
+            `;
+
+
+            container.appendChild(row);
+
+        }
+
+
+        function removeSkill(button) {
+
+            const container =
+                document.getElementById(
+                    "skills-container"
+                );
+
+
+            if (container.children.length > 1) {
+
+                button.parentElement.remove();
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Intelligence | CareerAI</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #111827;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: rgba(255,255,255,0.95);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            margin-right: auto;
+        }
+
+        .logo-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            margin-right: 7px;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(135deg,#4f46e5,#9333ea);
+        }
+
+        .logo span:last-child {
+            color: #6366f1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+        .nav-user {
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            background: linear-gradient(135deg,#6366f1,#8b5cf6);
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 45px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 18px;
+            background: linear-gradient(90deg,#4f46e5,#9333ea);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #64748b;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+
+        /* ================= SLIDER ================= */
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 30px 0 80px;
+        }
+
+        .slider {
+            display: flex;
+            width: 200%;
+            transition: transform 0.7s ease-in-out;
+        }
+
+        .slide {
+            width: 50%;
+            padding: 0 7%;
+        }
+
+        .slide-card {
+            min-height: 520px;
+            border-radius: 30px;
+            padding: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+
+            background: white;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 20px 60px rgba(15,23,42,0.08);
+        }
+
+
+        /* ================= SLIDE CONTENT ================= */
+
+        .slide-content {
+            flex: 1;
+        }
+
+        .slide-number {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .slide-content h2 {
+            font-size: 40px;
+            margin-bottom: 18px;
+        }
+
+        .slide-content > p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+
+        .points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .check {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 13px;
+        }
+
+
+        /* ================= SLIDE VISUAL ================= */
+
+        .slide-visual {
+            width: 400px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rating-box {
+            width: 310px;
+            padding: 30px;
+            border-radius: 25px;
+            background: #f8fafc;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: auto auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                conic-gradient(#6366f1 78%,
+                #e5e7eb 78%);
+
+            position: relative;
+        }
+
+        .score-circle::after {
+            content: "";
+            position: absolute;
+            width: 115px;
+            height: 115px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .score {
+            position: relative;
+            z-index: 2;
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .rating-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .rating-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+
+        /* ================= MODIFY VISUAL ================= */
+
+        .modify-box {
+            width: 320px;
+            padding: 30px;
+            border-radius: 25px;
+            background: #f8fafc;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .resume-document {
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .document-line {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .document-line.big {
+            width: 65%;
+            height: 12px;
+        }
+
+        .document-line.medium {
+            width: 85%;
+        }
+
+        .document-line.small {
+            width: 50%;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 30px;
+            margin: 12px 0;
+            color: #6366f1;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            border: none;
+            padding: 13px 23px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .primary {
+            color: white;
+            background: linear-gradient(135deg,#4f46e5,#9333ea);
+        }
+
+        .secondary {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= DOTS ================= */
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            width: 30px;
+            border-radius: 10px;
+            background: #6366f1;
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            padding: 100px 8%;
+            background: white;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+            max-width: 700px;
+            margin: auto;
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            padding: 80px 8%;
+            background: #f8fafc;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid #e5e7eb;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+
+        /* ================= HOW IT WORKS ================= */
+
+        .how {
+            padding: 100px 8%;
+            background: white;
+        }
+
+        .how h2 {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 25px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            margin: auto auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eef2ff;
+            color: #4f46e5;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .step p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg,#4f46e5,#9333ea);
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
+
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #4f46e5;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:900px) {
+
+            .slide-card {
+                flex-direction: column;
+                padding: 35px;
+            }
+
+            .slide-visual {
+                width: 100%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-user {
+                margin-left: 10px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .slide-content h2 {
+                font-size: 30px;
+            }
+
+            .points {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .button-row {
+                flex-wrap: wrap;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">C</span>
+        Career<span>AI</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/dashboard">Home</a>
+        <a href="/resume-rating">Resume Intelligence</a>
+        <a href="/jobs">Job Search</a>
+        <a href="/profile">Profile</a>
+    </div>
+
+    <div class="nav-user">
+
+        <div class="avatar">
+            <%= user.Name.charAt(0).toUpperCase() %>
+        </div>
+
+        <span>
+            <%= user.Name %>
+        </span>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h1>Resume Intelligence</h1>
+
+    <p>
+        Understand your resume, discover what needs improvement,
+        and create a stronger professional resume with the power of AI.
+    </p>
+
+</section>
+
+
+
+<!-- ================= HORIZONTAL SLIDER ================= -->
+
+<section class="slider-container">
+
+    <div class="slider" id="slider">
+
+
+        <!-- ================= SLIDE 1 ================= -->
+
+        <div class="slide">
+
+            <div class="slide-card">
+
+                <div class="slide-content">
+
+                    <span class="slide-number">
+                        01 / 02
+                    </span>
+
+                    <h2>Resume Rating</h2>
+
+                    <p>
+                        Get a detailed AI-powered analysis of your resume.
+                        Understand how strong your resume is and what you
+                        should improve before applying for jobs.
+                    </p>
+
+                    <div class="points">
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            ATS Compatibility
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Skills Analysis
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Experience Analysis
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Project Analysis
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Missing Keywords
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Improvement Suggestions
+                        </div>
+
+                    </div>
+
+                    <div class="button-row">
+
+                        <button class="btn primary" onclick="nextSlide()">
+                            Next →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="slide-visual">
+
+                    <div class="rating-box">
+
+                        <div class="score-circle">
+
+                            <span class="score">
+                                78
+                            </span>
+
+                        </div>
+
+                        <h3>Resume Score</h3>
+
+                        <div class="rating-line">
+                            <span>ATS Score</span>
+                            <strong>72%</strong>
+                        </div>
+
+                        <div class="rating-line">
+                            <span>Skills</span>
+                            <strong>85%</strong>
+                        </div>
+
+                        <div class="rating-line">
+                            <span>Projects</span>
+                            <strong>88%</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= SLIDE 2 ================= -->
+
+        <div class="slide">
+
+            <div class="slide-card">
+
+                <div class="slide-content">
+
+                    <span class="slide-number">
+                        02 / 02
+                    </span>
+
+                    <h2>Modify Your Resume</h2>
+
+                    <p>
+                        Let CareerAI improve your existing resume while
+                        keeping your original information intact.
+                        Make your resume more professional and ATS-friendly.
+                    </p>
+
+                    <div class="points">
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Improve Grammar
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Professional Wording
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Better Summary
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            Improve Projects
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            ATS Optimization
+                        </div>
+
+                        <div class="point">
+                            <span class="check">✓</span>
+                            No Fake Information
+                        </div>
+
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="btn secondary"
+                            onclick="previousSlide()">
+                            ← Previous
+                        </button>
+
+                        <a
+                            href="/resumemodifier"
+                            class="btn primary"
+                            style="text-decoration:none;">
+                            Modify Resume with AI
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="slide-visual">
+
+                    <div class="modify-box">
+
+                        <div class="resume-document">
+
+                            <div class="document-line big"></div>
+                            <div class="document-line small"></div>
+                            <br>
+
+                            <div class="document-line medium"></div>
+                            <div class="document-line medium"></div>
+                            <div class="document-line small"></div>
+
+                            <div class="arrow">
+                                ↓
+                            </div>
+
+                            <div class="document-line big"></div>
+                            <div class="document-line medium"></div>
+                            <div class="document-line medium"></div>
+                            <div class="document-line small"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DOTS -->
+
+    <div class="dots">
+
+        <span
+            class="dot active"
+            onclick="goToSlide(0)">
+        </span>
+
+        <span
+            class="dot"
+            onclick="goToSlide(1)">
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ABOUT CAREERAI ================= -->
+
+<section class="about">
+
+    <h2 class="section-title">
+        About CareerAI
+    </h2>
+
+    <p class="section-description">
+
+        CareerAI is designed to help students and job seekers
+        build a stronger career profile. From understanding your
+        resume to improving it and discovering relevant
+        opportunities, CareerAI brings important career tools
+        together in one place.
+
+    </p>
+
+</section>
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <h2>
+        Everything You Need for Your Career
+    </h2>
+
+    <div class="feature-grid">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📄
+            </div>
+
+            <h3>
+                Resume Intelligence
+            </h3>
+
+            <p>
+                Analyze your resume and understand its strengths,
+                weaknesses, ATS compatibility and improvement areas.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ✨
+            </div>
+
+            <h3>
+                AI Resume Modification
+            </h3>
+
+            <p>
+                Improve your resume wording, structure, projects
+                and professional presentation without inventing
+                information.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Job Search
+            </h3>
+
+            <p>
+                Discover job opportunities based on your skills,
+                profile and career interests.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                👤
+            </div>
+
+            <h3>
+                Career Profile
+            </h3>
+
+            <p>
+                Maintain your education, skills, resume and
+                professional information in one place.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🎯
+            </div>
+
+            <h3>
+                Personalized Insights
+            </h3>
+
+            <p>
+                Understand what you can improve to make yourself
+                more prepared for internship and job applications.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚀
+            </div>
+
+            <h3>
+                Career Growth
+            </h3>
+
+            <p>
+                Build better application materials and take
+                smarter steps toward your career goals.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how">
+
+    <h2>
+        How CareerAI Works
+    </h2>
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Create Your Profile
+            </h3>
+
+            <p>
+                Add your education, skills and career information.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Upload Resume
+            </h3>
+
+            <p>
+                Upload your existing resume to CareerAI.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Analyze & Improve
+            </h3>
+
+            <p>
+                Get AI-powered insights and improve your resume.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3>
+                Find Opportunities
+            </h3>
+
+            <p>
+                Use your improved profile to explore relevant jobs.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <h2>
+        Build a Better Career Profile
+    </h2>
+
+    <p>
+        Start improving your resume and discover your next opportunity.
+    </p>
+
+    <a href="/dashboard" class="cta-button">
+        Go to Dashboard →
+    </a>
+
+</section>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    let currentSlide = 0;
+
+    const slider = document.getElementById("slider");
+    const dots = document.querySelectorAll(".dot");
+
+
+    function updateSlider() {
+
+        if(currentSlide === 0) {
+
+            slider.style.transform = "translateX(0%)";
+
+        }
+        else {
+
+            slider.style.transform = "translateX(-50%)";
+
+        }
+
+
+        dots.forEach((dot,index) => {
+
+            if(index === currentSlide) {
+
+                dot.classList.add("active");
+
+            }
+            else {
+
+                dot.classList.remove("active");
+
+            }
+
+        });
+
+    }
+
+
+    function nextSlide() {
+
+        if(currentSlide < 1) {
+
+            currentSlide++;
+
+            updateSlider();
+
+        }
+
+    }
+
+
+    function previousSlide() {
+
+        if(currentSlide > 0) {
+
+            currentSlide--;
+
+            updateSlider();
+
+        }
+
+    }
+
+
+    function goToSlide(index) {
+
+        currentSlide = index;
+
+        updateSlider();
+
+    }
+
+</script>
+
+
+</body>
+</html>

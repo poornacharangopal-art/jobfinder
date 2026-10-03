@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Modifier</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f5f7fb;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 500px;
+            background: white;
+            padding: 45px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .welcome {
+            font-size: 30px;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .welcome span {
+            color: #2563eb;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .upload-title {
+            font-size: 20px;
+            color: #374151;
+            margin-bottom: 18px;
+        }
+
+        .upload-box {
+            border: 2px dashed #9ca3af;
+            border-radius: 12px;
+            padding: 30px 20px;
+            margin-bottom: 25px;
+        }
+
+        .upload-box:hover {
+            border-color: #2563eb;
+            background: #f8fbff;
+        }
+
+        .upload-box input {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .file-info {
+            margin-top: 12px;
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .modify-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modify-btn:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <div class="card">
+
+
+            <h1 class="welcome">
+
+                Welcome,
+                <span>
+                    <%= candidate.Name %>
+                </span>
+
+            </h1>
+
+
+            <p class="subtitle">
+
+                Upload your resume and let AI improve it
+                professionally.
+
+            </p>
+
+
+            <h2 class="upload-title">
+
+                Upload Your Resume
+
+            </h2>
+
+
+            <form
+                action="/modifier"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+
+                <div class="upload-box">
+
+                    <input
+                        type="file"
+                        name="resume"
+                        accept=".pdf,application/pdf"
+                        required
+                    >
+
+                    <p class="file-info">
+                        Please upload your resume in PDF format
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="modify-btn"
+                >
+
+                    ✨ Modify Resume
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
